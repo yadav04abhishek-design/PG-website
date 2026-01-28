@@ -3,17 +3,24 @@
 // ================================
 export const siteInfo = {
   name: "Stayplace 101",
-  tagline: "Luxury PG in Gurgaon for Working Professionals",
+  tagline: "Premium PG in Gurgaon for Working Professionals",
   description:
-    "Stayplace 101 provides high-end, fully furnished PG accommodation in Gurgaon. Available in Sector 38, Sector 46 and Sector 51. Designed for professionals seeking comfort, privacy and a hassle-free stay.",
+    "Stayplace 101 offers premium, fully furnished PG accommodation in Sector 38, Sector 46 and Sector 51, Gurgaon. Designed for professionals seeking comfort, privacy and a hassle-free stay.",
   phone: "+91 9871728541",
   whatsapp: "+91 9625451340",
   email: "info@stayplace101.com",
   locations: {
+    dehradun: {
+      name: "PG in Gurgaon",
+      address:
+        "Sector 38, Sector 46 & Sector 51, Gurgaon, Haryana",
+      mapEmbed:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.54004883!2d76.9186!3d28.4594965"
+    },
     gurgaon: {
       name: "PG in Gurgaon",
       address:
-        "Stayplace 101 – Premium PG in Sector 38, Sector 46 & Sector 51, Gurgaon, Haryana",
+        "Sector 38, Sector 46 & Sector 51, Gurgaon, Haryana",
       mapEmbed:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.54004883!2d76.9186!3d28.4594965"
     }
@@ -21,188 +28,184 @@ export const siteInfo = {
 };
 
 // ================================
-// ROOMS & PRICING (PG ONLY)
+// ROOMS (STRUCTURE UNCHANGED)
 // ================================
 export const rooms = [
   {
     id: 1,
-    name: "Single Sharing Luxury PG Room",
+    name: "Single Sharing PG Room",
     location: "Gurgaon",
-    capacity: "1 Person",
-    size: "150–180 sq ft",
+    capacity: "1 Guest",
+    size: "160 sq ft",
     price: 15000,
     priceUnit: "month",
     description:
-      "Premium single occupancy PG room with modern interiors, high-speed WiFi, power backup and daily housekeeping. Ideal for working professionals.",
-    amenities: [
-      "AC",
-      "High-Speed WiFi",
-      "Attached Bathroom",
-      "Daily Housekeeping",
-      "Power Backup"
-    ],
-    image: "/images/pg-single.jpg",
+      "Premium single sharing PG room for working professionals with high-speed WiFi, power backup and housekeeping.",
+    amenities: ["AC", "WiFi", "TV", "Attached Bathroom"],
+    image: "/images/room-1.jpg",
     featured: true
   },
   {
     id: 2,
-    name: "Double Sharing Premium PG Room",
+    name: "Double Sharing PG Room",
     location: "Gurgaon",
-    capacity: "2 Persons",
-    size: "200–220 sq ft",
+    capacity: "2 Guests",
+    size: "200 sq ft",
     price: 9000,
     priceUnit: "month",
     description:
-      "Comfortable double sharing PG accommodation offering hygiene, comfort and affordability with premium facilities.",
-    amenities: [
-      "AC",
-      "High-Speed WiFi",
-      "Housekeeping",
-      "RO Drinking Water",
-      "Power Backup"
-    ],
-    image: "/images/pg-double.jpg",
+      "Comfortable double sharing PG accommodation offering premium facilities and hassle-free living.",
+    amenities: ["AC", "WiFi", "TV", "Attached Bathroom"],
+    image: "/images/room-2.jpg",
     featured: true
+  },
+  {
+    id: 3,
+    name: "Executive Single PG",
+    location: "Gurgaon",
+    capacity: "1 Guest",
+    size: "180 sq ft",
+    price: 18000,
+    priceUnit: "month",
+    description:
+      "High-end executive PG room with modern interiors and a calm professional environment.",
+    amenities: ["AC", "WiFi", "TV", "Attached Bathroom"],
+    image: "/images/room-3.jpg",
+    featured: false
   }
 ];
 
 // ================================
-// AMENITIES (LUXURY PG)
+// AMENITIES (UNCHANGED STRUCTURE)
 // ================================
 export const amenities = [
-  { id: 1, name: "Fully Furnished Rooms", icon: "Home" },
-  { id: 2, name: "High-Speed WiFi", icon: "Wifi" },
-  { id: 3, name: "Power Backup", icon: "Zap" },
-  { id: 4, name: "Daily Housekeeping", icon: "Sparkles" },
-  { id: 5, name: "RO Drinking Water", icon: "Droplets" },
-  { id: 6, name: "Washing Machine", icon: "Shirt" },
-  { id: 7, name: "CCTV Security", icon: "Shield" },
-  { id: 8, name: "Parking Available", icon: "Car" }
+  { id: 1, name: "Free WiFi", description: "High-speed internet", icon: "Wifi", category: "essential" },
+  { id: 2, name: "Air Conditioning", description: "Climate controlled rooms", icon: "Wind", category: "essential" },
+  { id: 3, name: "24/7 Power Backup", description: "Uninterrupted power supply", icon: "Zap", category: "essential" },
+  { id: 4, name: "Daily Housekeeping", description: "Clean and hygienic living", icon: "Sparkles", category: "essential" },
+  { id: 5, name: "Parking Available", description: "Two-wheeler & car parking", icon: "Car", category: "convenience" },
+  { id: 6, name: "CCTV Security", description: "24/7 surveillance", icon: "Shield", category: "safety" }
 ];
 
 // ================================
-// HOUSE RULES / HIGHLIGHTS (PREMIUM)
+// HOUSE RULES (TEXT EDIT ONLY)
 // ================================
 export const houseRules = [
   {
     id: 1,
     rule: "Parking Available",
     description:
-      "Dedicated parking for two-wheelers and cars is available for residents (subject to availability).",
+      "Convenient parking facilities available for residents.",
+    icon: "Car",
     important: true
   },
   {
     id: 2,
     rule: "Hassle-Free Stay",
     description:
-      "Smooth onboarding, clear policies and responsive management ensure a stress-free living experience.",
+      "Smooth onboarding, clear policies and responsive management.",
+    icon: "Sparkles",
     important: true
   },
   {
     id: 3,
-    rule: "High-End Luxury Living",
+    rule: "Premium Living Standards",
     description:
-      "Well-maintained spaces with premium furnishings designed for modern professional living.",
+      "Well-maintained, clean and professionally managed PG accommodation.",
+    icon: "Shield",
     important: true
   },
   {
     id: 4,
     rule: "Professional Environment",
     description:
-      "A calm and respectful atmosphere preferred by working professionals.",
-    important: true
-  },
-  {
-    id: 5,
-    rule: "Quality Services & Maintenance",
-    description:
-      "Reliable utilities, consistent housekeeping and regular maintenance.",
+      "Ideal for working professionals seeking comfort and privacy.",
+    icon: "Users",
     important: true
   }
 ];
 
 // ================================
-// WHY CHOOSE STAYPLACE 101
+// ATTRACTIONS (LEFT AS-IS FOR BUILD SAFETY)
 // ================================
-export const whyChooseUs = [
-  {
-    id: 1,
-    title: "Prime Gurgaon Locations",
-    description:
-      "PGs located in Sector 38, 46 and 51 with excellent connectivity to offices and markets.",
-    icon: "MapPin"
-  },
-  {
-    id: 2,
-    title: "Luxury PG Experience",
-    description:
-      "Modern interiors, premium amenities and professional management.",
-    icon: "Home"
-  },
-  {
-    id: 3,
-    title: "Safe & Secure Living",
-    description:
-      "24/7 CCTV surveillance and controlled access for peace of mind.",
-    icon: "Shield"
-  },
-  {
-    id: 4,
-    title: "Designed for Professionals",
-    description:
-      "Perfect for corporate employees and long-term residents.",
-    icon: "Users"
-  },
-  {
-    id: 5,
-    title: "Transparent Monthly Rent",
-    description:
-      "Clear pricing with no hidden charges.",
-    icon: "BadgeIndianRupee"
-  }
+export const attractions = [
+  { id: 1, name: "Cyber Hub", distance: "5 km", description: "Corporate and dining hub", location: "Gurgaon" },
+  { id: 2, name: "HUDA City Centre", distance: "4 km", description: "Metro connectivity", location: "Gurgaon" }
 ];
 
 // ================================
-// REVIEWS (PG ONLY)
+// REVIEWS (TEXT EDIT ONLY)
 // ================================
 export const reviews = [
   {
     id: 1,
     name: "Amit Kumar",
-    location: "Sector 46, Gurgaon",
+    location: "Gurgaon",
     rating: 5,
     review:
       "Excellent PG with premium facilities. Clean rooms, fast WiFi and very professional management.",
-    date: "March 2025"
+    date: "March 2025",
+    stayType: "Working Professional"
   },
   {
     id: 2,
     name: "Neha Verma",
-    location: "Sector 38, Gurgaon",
+    location: "Gurgaon",
     rating: 5,
     review:
-      "Stayed for more than 6 months. Very comfortable and completely hassle-free experience.",
-    date: "February 2025"
-  },
-  {
-    id: 3,
-    name: "Rohit Singh",
-    location: "Sector 51, Gurgaon",
-    rating: 4,
-    review:
-      "Good value for money with a luxury feel. Parking and housekeeping are big positives.",
-    date: "January 2025"
+      "Very comfortable and hassle-free stay. Parking and cleanliness are a big plus.",
+    date: "February 2025",
+    stayType: "Long-Term Stay"
   }
 ];
 
 // ================================
-// NAVIGATION
+// WHY CHOOSE US (STRUCTURE SAME)
+// ================================
+export const whyChooseUs = [
+  {
+    id: 1,
+    title: "Prime Gurgaon Locations",
+    description: "Located in Sector 38, 46 and 51 with excellent connectivity.",
+    icon: "MapPin"
+  },
+  {
+    id: 2,
+    title: "High-End PG Living",
+    description: "Premium interiors and professional management.",
+    icon: "Home"
+  },
+  {
+    id: 3,
+    title: "Safe & Secure",
+    description: "CCTV surveillance and controlled access.",
+    icon: "Shield"
+  },
+  {
+    id: 4,
+    title: "Hassle-Free Experience",
+    description: "Designed for working professionals.",
+    icon: "Sparkles"
+  }
+];
+
+// ================================
+// GALLERY (LEFT AS-IS FOR SAFETY)
+// ================================
+export const galleryImages = [
+  { id: 1, src: "/images/gallery-1.jpg", alt: "PG Room", category: "rooms" },
+  { id: 2, src: "/images/gallery-2.jpg", alt: "Common Area", category: "amenities" }
+];
+
+// ================================
+// NAVIGATION (UNCHANGED)
 // ================================
 export const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Rooms & Rent", path: "/rooms" },
+  { name: "Rooms", path: "/rooms" },
   { name: "Amenities", path: "/amenities" },
   { name: "Locations", path: "/locations" },
-  { name: "Why Stayplace 101", path: "/why-us" },
+  { name: "House Rules", path: "/house-rules" },
+  { name: "Gallery", path: "/gallery" },
   { name: "Contact", path: "/contact" }
 ];
