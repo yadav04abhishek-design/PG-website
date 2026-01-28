@@ -5,7 +5,7 @@ export const siteInfo = {
   name: "Stayplace 101",
   tagline: "Luxury PG in Gurgaon for Working Professionals",
   description:
-    "Stayplace 101 offers high-end, fully furnished luxury PG accommodation in Gurgaon. Located in Sector 38, Sector 46 and Sector 51, designed for professionals seeking comfort, privacy and a hassle-free stay.",
+    "Stayplace 101 provides high-end, fully furnished PG accommodation in Gurgaon. Available in Sector 38, Sector 46 and Sector 51. Designed for professionals seeking comfort, privacy and a hassle-free stay.",
   phone: "+91 9871728541",
   whatsapp: "+91 9625451340",
   email: "info@stayplace101.com",
@@ -13,7 +13,7 @@ export const siteInfo = {
     gurgaon: {
       name: "PG in Gurgaon",
       address:
-        "Stayplace 101 – Premium PG accommodation in Sector 38, Sector 46 & Sector 51, Gurgaon, Haryana",
+        "Stayplace 101 – Premium PG in Sector 38, Sector 46 & Sector 51, Gurgaon, Haryana",
       mapEmbed:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.54004883!2d76.9186!3d28.4594965"
     }
@@ -30,10 +30,10 @@ export const rooms = [
     location: "Gurgaon",
     capacity: "1 Person",
     size: "150–180 sq ft",
-    price: "₹14,000 – ₹18,000",
+    price: 15000,
     priceUnit: "month",
     description:
-      "Premium single-occupancy PG room with modern interiors, high-speed WiFi, power backup and professional housekeeping. Ideal for corporate professionals.",
+      "Premium single occupancy PG room with modern interiors, high-speed WiFi, power backup and daily housekeeping. Ideal for working professionals.",
     amenities: [
       "AC",
       "High-Speed WiFi",
@@ -50,10 +50,10 @@ export const rooms = [
     location: "Gurgaon",
     capacity: "2 Persons",
     size: "200–220 sq ft",
-    price: "₹9,000 – ₹12,000",
+    price: 9000,
     priceUnit: "month",
     description:
-      "Well-planned double sharing PG accommodation offering comfort, hygiene and affordability without compromising on quality.",
+      "Comfortable double sharing PG accommodation offering hygiene, comfort and affordability with premium facilities.",
     amenities: [
       "AC",
       "High-Speed WiFi",
@@ -88,35 +88,35 @@ export const houseRules = [
     id: 1,
     rule: "Parking Available",
     description:
-      "Dedicated two-wheeler and car parking available for residents, subject to availability.",
+      "Dedicated parking for two-wheelers and cars is available for residents (subject to availability).",
     important: true
   },
   {
     id: 2,
     rule: "Hassle-Free Stay",
     description:
-      "Smooth onboarding, transparent policies and responsive management ensure a stress-free living experience.",
+      "Smooth onboarding, clear policies and responsive management ensure a stress-free living experience.",
     important: true
   },
   {
     id: 3,
     rule: "High-End Luxury Living",
     description:
-      "Thoughtfully designed spaces with premium furnishings that reflect modern, high-end PG living.",
+      "Well-maintained spaces with premium furnishings designed for modern professional living.",
     important: true
   },
   {
     id: 4,
     rule: "Professional Environment",
     description:
-      "A refined living atmosphere preferred by working professionals who value comfort and privacy.",
+      "A calm and respectful atmosphere preferred by working professionals.",
     important: true
   },
   {
     id: 5,
     rule: "Quality Services & Maintenance",
     description:
-      "Reliable utilities, consistent housekeeping and well-maintained facilities for long-term comfort.",
+      "Reliable utilities, consistent housekeeping and regular maintenance.",
     important: true
   }
 ];
@@ -129,35 +129,35 @@ export const whyChooseUs = [
     id: 1,
     title: "Prime Gurgaon Locations",
     description:
-      "Strategically located PGs in Sector 38, 46 and 51 with excellent connectivity to offices and markets.",
+      "PGs located in Sector 38, 46 and 51 with excellent connectivity to offices and markets.",
     icon: "MapPin"
   },
   {
     id: 2,
     title: "Luxury PG Experience",
     description:
-      "Premium interiors, modern amenities and professional management.",
-    icon: "Star"
+      "Modern interiors, premium amenities and professional management.",
+    icon: "Home"
   },
   {
     id: 3,
     title: "Safe & Secure Living",
     description:
-      "24/7 CCTV surveillance and controlled access for complete peace of mind.",
-    icon: "ShieldCheck"
+      "24/7 CCTV surveillance and controlled access for peace of mind.",
+    icon: "Shield"
   },
   {
     id: 4,
     title: "Designed for Professionals",
     description:
-      "Ideal for corporate employees seeking a calm, comfortable and long-term stay.",
-    icon: "Briefcase"
+      "Perfect for corporate employees and long-term residents.",
+    icon: "Users"
   },
   {
     id: 5,
-    title: "Transparent & Affordable Pricing",
+    title: "Transparent Monthly Rent",
     description:
-      "Clear monthly rent with no hidden charges.",
+      "Clear pricing with no hidden charges.",
     icon: "BadgeIndianRupee"
   }
 ];
@@ -181,7 +181,7 @@ export const reviews = [
     location: "Sector 38, Gurgaon",
     rating: 5,
     review:
-      "Stayed for 7 months. Very comfortable and hassle-free experience. Highly recommended.",
+      "Stayed for more than 6 months. Very comfortable and completely hassle-free experience.",
     date: "February 2025"
   },
   {
@@ -190,7 +190,7 @@ export const reviews = [
     location: "Sector 51, Gurgaon",
     rating: 4,
     review:
-      "Good value for money with luxury feel. Parking availability is a big plus.",
+      "Good value for money with a luxury feel. Parking and housekeeping are big positives.",
     date: "January 2025"
   }
 ];
