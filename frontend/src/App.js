@@ -1,21 +1,22 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Toaster } from 'sonner';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { WhatsAppButton } from './components/layout/WhatsAppButton';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "sonner";
 
-import HomePage from './pages/HomePage';
-import RoomsPage from './pages/RoomsPage';
-import AmenitiesPage from './pages/AmenitiesPage';
-import LocationsPage from './pages/LocationsPage';
-import HouseRulesPage from './pages/HouseRulesPage';
-import GalleryPage from './pages/GalleryPage';
-import ContactPage from './pages/ContactPage';
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
+import { WhatsAppButton } from "./components/layout/WhatsAppButton";
+
+import HomePage from "./pages/HomePage";
+import RoomsPage from "./pages/RoomsPage";
+import AmenitiesPage from "./pages/AmenitiesPage";
+import LocationsPage from "./pages/LocationsPage";
+import HouseRulesPage from "./pages/HouseRulesPage";
+import GalleryPage from "./pages/GalleryPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Header />
 
@@ -29,7 +30,7 @@ function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />
 
-            {/* ✅ Catch-all route for Cloudflare Pages */}
+            {/* Cloudflare SPA fallback */}
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>
@@ -41,10 +42,10 @@ function App() {
           position="top-right"
           toastOptions={{
             style: {
-              background: 'white',
-              border: '1px solid rgba(0,0,0,0.1)',
-              borderRadius: '12px',
-            },
+              background: "white",
+              border: "1px solid rgba(0,0,0,0.1)",
+              borderRadius: "12px"
+            }
           }}
         />
       </div>
