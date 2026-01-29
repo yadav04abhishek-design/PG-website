@@ -2,17 +2,26 @@
 const path = require("path");
 require("dotenv").config();
 
-// Check if we're in development/preview mode (not production build)
-// Craco sets NODE_ENV=development for start, NODE_ENV=production for build
-const isDevServer = process.env.NODE_ENV !== "production";
+/**
+ * Cloudflare Pages specifics:
+ * - NODE_ENV=production
+ * - CI=true
+ *
+ * We must NEVER load dev-only plugins in CI/production builds
+ */
+const isDevServer =
+  process.env.NODE_ENV !== "production" &&
+  process.env.CI !== "true";
 
-// Environment variable overrides
+// Feature flags via env
 const config = {
   enableHealthCheck: process.env.ENABLE_HEALTH_CHECK === "true",
-  enableVisualEdits: isDevServer, // Only enable during dev server
+  enableVisualEdits: isDevServer,
 };
 
-// Conditionally load visual edits modules only in dev mode
+// --------------------
+// Optional dev modules
+// --------------------
 let setupDevServer;
 let babelMetadataPlugin;
 
@@ -21,7 +30,9 @@ if (config.enableVisualEdits) {
   babelMetadataPlugin = require("./plugins/visual-edits/babel-metadata-plugin");
 }
 
-// Conditionally load health check modules only if enabled
+// --------------------
+// Optional health check
+// --------------------
 let WebpackHealthPlugin;
 let setupHealthEndpoints;
 let healthPluginInstance;
@@ -32,7 +43,10 @@ if (config.enableHealthCheck) {
   healthPluginInstance = new WebpackHealthPlugin();
 }
 
-const webpackConfig = {
+// --------------------
+// CRACO CONFIG
+// --------------------
+module.exports = {
   eslint: {
     configure: {
       extends: ["plugin:react-hooks/recommended"],
@@ -42,65 +56,65 @@ const webpackConfig = {
       },
     },
   },
+
   webpack: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
-    configure: (webpackConfig) => {
 
-      // Add ignored patterns to reduce watched directories
-        webpackConfig.watchOptions = {
-          ...webpackConfig.watchOptions,
-          ignored: [
-            '**/node_modules/**',
-            '**/.git/**',
-            '**/build/**',
-            '**/dist/**',
-            '**/coverage/**',
-            '**/public/**',
+    configure: (webpackConfig) => {
+      // Reduce watchers (important for CI)
+      webpackConfig.watchOptions = {
+        ...webpackConfig.watchOptions,
+        ignored: [
+          "**/node_modules/**",
+          "**/.git/**",
+          "**/build/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/public/**",
         ],
       };
 
-      // Add health check plugin to webpack if enabled
+      // Add health plugin only when explicitly enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
       }
+
       return webpackConfig;
     },
   },
-};
 
-// Only add babel metadata plugin during dev server
-if (config.enableVisualEdits && babelMetadataPlugin) {
-  webpackConfig.babel = {
-    plugins: [babelMetadataPlugin],
-  };
-}
-
-webpackConfig.devServer = (devServerConfig) => {
-  // Apply visual edits dev server setup only if enabled
-  if (config.enableVisualEdits && setupDevServer) {
-    devServerConfig = setupDevServer(devServerConfig);
-  }
-
-  // Add health check endpoints if enabled
-  if (config.enableHealthCheck && setupHealthEndpoints && healthPluginInstance) {
-    const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
-
-    devServerConfig.setupMiddlewares = (middlewares, devServer) => {
-      // Call original setup if exists
-      if (originalSetupMiddlewares) {
-        middlewares = originalSetupMiddlewares(middlewares, devServer);
+  // Babel plugins ONLY in dev (never CI / production)
+  babel: config.enableVisualEdits
+    ? {
+        plugins: [babelMetadataPlugin],
       }
+    : undefined,
 
-      // Setup health endpoints
-      setupHealthEndpoints(devServer, healthPluginInstance);
+  // Dev server config (never used in Cloudflare build)
+  devServer: (devServerConfig) => {
+    if (config.enableVisualEdits && setupDevServer) {
+      devServerConfig = setupDevServer(devServerConfig);
+    }
 
-      return middlewares;
-    };
-  }
+    if (
+      config.enableHealthCheck &&
+      setupHealthEndpoints &&
+      healthPluginInstance
+    ) {
+      const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
 
-  return devServerConfig;
+      devServerConfig.setupMiddlewares = (middlewares, devServer) => {
+        if (originalSetupMiddlewares) {
+          middlewares = originalSetupMiddlewares(middlewares, devServer);
+        }
+
+        setupHealthEndpoints(devServer, healthPluginInstance);
+        return middlewares;
+      };
+    }
+
+    return devServerConfig;
+  },
 };
-
-module.exports = webpackConfig;
