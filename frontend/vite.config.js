@@ -3,7 +3,8 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  base: "/PG-website/",   // 👈 EXACT repo name
+  // Cloudflare Pages ke liye base ko "/" rakhein ya hata dein
+  base: "/", 
   plugins: [react()],
   resolve: {
     alias: {
